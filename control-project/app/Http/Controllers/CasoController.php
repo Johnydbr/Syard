@@ -34,7 +34,16 @@ class CasoController extends Controller
             'data_finalizado' => 'nullable|date',
         ]);
 
-        Caso::create($request->only(['solicitante_id', 'pesquisado_id', 'tipo_caso', 'data_abertura', 'data_finalizado']));
+        Caso::create(array_merge(
+            $request->only(['solicitante_id', 'pesquisado_id', 'tipo_caso', 'data_abertura', 'data_finalizado']),
+            [
+                'entrevista'     => $request->boolean('entrevista'),
+                'copia_hd'       => $request->boolean('copia_hd'),
+                'copia_celular'  => $request->boolean('copia_celular'),
+                'monitoramento'  => $request->boolean('monitoramento'),
+                'pesquisa_campo' => $request->boolean('pesquisa_campo'),
+            ]
+        ));
 
         return redirect()->route('casos.index')->with('success', 'Caso criado com sucesso!');
     }
@@ -62,7 +71,16 @@ class CasoController extends Controller
             'data_finalizado' => 'nullable|date',
         ]);
 
-        $caso->update($request->only(['solicitante_id', 'pesquisado_id', 'tipo_caso', 'data_abertura', 'data_finalizado']));
+        $caso->update(array_merge(
+            $request->only(['solicitante_id', 'pesquisado_id', 'tipo_caso', 'data_abertura', 'data_finalizado']),
+            [
+                'entrevista'     => $request->boolean('entrevista'),
+                'copia_hd'       => $request->boolean('copia_hd'),
+                'copia_celular'  => $request->boolean('copia_celular'),
+                'monitoramento'  => $request->boolean('monitoramento'),
+                'pesquisa_campo' => $request->boolean('pesquisa_campo'),
+            ]
+        ));
 
         return redirect()->route('casos.index')->with('success', 'Caso atualizado com sucesso!');
     }

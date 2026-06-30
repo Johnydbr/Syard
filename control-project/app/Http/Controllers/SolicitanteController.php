@@ -24,10 +24,12 @@ class SolicitanteController extends Controller
     {
         $request->validate([
             'nome' => 'required|string|max:255',
+            'email' => 'nullable|email|max:255',
+            'contato' => 'nullable|string|max:50',
             'empresa_solicitante_id' => 'required|exists:empresa_solicitantes,id',
         ]);
 
-        Solicitante::create($request->only(['nome', 'empresa_solicitante_id']));
+        Solicitante::create($request->only(['nome', 'email', 'contato', 'empresa_solicitante_id']));
 
         return redirect()->route('solicitantes.index')->with('success', 'Solicitante cadastrado com sucesso.');
     }
@@ -47,10 +49,12 @@ class SolicitanteController extends Controller
     {
         $request->validate([
             'nome' => 'required|string|max:255',
+            'email' => 'nullable|email|max:255',
+            'contato' => 'nullable|string|max:50',
             'empresa_solicitante_id' => 'required|exists:empresa_solicitantes,id',
         ]);
 
-        $solicitante->update($request->only(['nome', 'empresa_solicitante_id']));
+        $solicitante->update($request->only(['nome', 'email', 'contato', 'empresa_solicitante_id']));
 
         return redirect()->route('solicitantes.index')->with('success', 'Solicitante atualizado com sucesso.');
     }

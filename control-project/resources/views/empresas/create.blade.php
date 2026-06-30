@@ -4,19 +4,19 @@
     <div class="space-y-6">
         <div class="flex flex-col gap-4 sm:flex-row sm:items-end sm:justify-between">
             <div>
-                <p class="text-sm uppercase tracking-[0.3em] text-orange-600">Nova empresa</p>
-                <h2 class="text-2xl font-semibold text-slate-900">Cadastrar empresa solicitante</h2>
+                <p class="text-sm uppercase tracking-[0.3em] font-semibold" style="color: #d4af37;">Nova empresa</p>
+                <h2 class="text-2xl font-semibold text-white">Cadastrar empresa solicitante</h2>
             </div>
-            <a href="{{ route('empresas.index') }}" class="text-sm font-medium text-slate-600 hover:text-orange-600">Voltar à lista</a>
+            <a href="{{ route('empresas.index') }}" class="text-sm font-medium hover:opacity-80" style="color: #d4af37;">Voltar à lista</a>
         </div>
 
-        <div class="rounded-3xl border border-slate-200 bg-white p-6 shadow-sm">
+        <div class="rounded-3xl border p-6 shadow-sm" style="background-color: #2a2a2a; border-color: #444444;">
             <form action="{{ route('empresas.store') }}" method="POST" class="space-y-6">
                 @csrf
                 @include('empresas._form')
                 <div class="flex items-center gap-3">
-                    <button type="submit" class="inline-flex items-center justify-center rounded-2xl bg-orange-600 px-5 py-2 text-sm font-semibold text-white hover:bg-orange-700">Salvar</button>
-                    <a href="{{ route('empresas.index') }}" class="text-sm font-medium text-slate-600 hover:text-orange-600">Cancelar</a>
+                    <button type="submit" class="inline-flex items-center justify-center rounded-2xl px-5 py-2 text-sm font-semibold text-white shadow-sm hover:opacity-90" style="background-color: #d4af37;">Salvar</button>
+                    <a href="{{ route('empresas.index') }}" class="text-sm font-medium hover:opacity-80" style="color: #d4af37;">Cancelar</a>
                 </div>
             </form>
         </div>
